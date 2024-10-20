@@ -17,10 +17,26 @@ function Home() {
 
   interface State {
     autoList: AutoList[];
+    addAutoForm: boolean;
+    userInput: {
+      make: string;
+      model: string;
+      year: string;
+      price: string;
+      type: string;
+    };
   }
 
   const [state, setState] = useState<State>({
     autoList: [],
+    addAutoForm: false,
+    userInput: {
+      make: "Toyota",
+      model: "",
+      year: "",
+      price: "",
+      type: "",
+    },
   });
 
   const fetchAuto = async () => {
@@ -30,7 +46,6 @@ function Home() {
       process.env.NODE_ENV === "production"
         ? `${process.env.REACT_APP_API_URL}/api/`
         : "/api/";
-        console.log("apiUrl:", apiUrl);
     const header = await fetch(apiUrl);
     const autoList = await header.json();
 
@@ -42,13 +57,142 @@ function Home() {
     });
   };
 
+  useEffect(()=>{
+    console.log("State:", state)
+  })
+
   useEffect(() => {
     fetchAuto();
   }, []);
 
+  const updateAddAuto = () => {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        addAutoForm: !prevState.addAutoForm,
+      };
+    });
+  };
+
+  const updateForm = (e: any) => {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        userInput: {
+          ...prevState.userInput,
+          [e.target.name]: e.target.value,
+        },
+      };
+    });
+  };
+
+  const submit=async()=>{
+
+    const fetchOptions={
+      method:'POST',
+      headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      },
+      body:JSON.stringify(state.userInput)
+    }
+    const apiUrl: any =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.REACT_APP_API_URL}/api/`
+      : "/api/";
+    const response=await fetch(apiUrl, fetchOptions);
+     
+    if (!response.ok){
+      const errorMessage=await response.text();
+      throw new Error(errorMessage)
+    }
+
+    return response.json();
+
+  }
+
   return (
     <div>
       <h1>Auto List</h1>
+      <div>
+        <button onClick={updateAddAuto}>Add Auto</button>
+      </div>
+      <div className={form}>
+        {state.addAutoForm && (
+          <>
+            {/* make: string;
+                model: string;
+                year: number;
+                price: number;
+                type: string; 
+          */}
+            <ul>
+              <li>
+                <div>
+                  <label>Make</label>
+                </div>
+                <div>
+                  <input
+                    name="make"
+                    onChange={updateForm}
+                    type="text"
+                    value={state.userInput.make}
+                  />
+                </div>
+              </li>
+              <li>
+                <div>
+                  <label>Model</label>
+                </div>
+                <div>
+                  <input 
+                  name="model"
+                  onChange={updateForm}
+                  type="text" value={state.userInput.model} />
+                </div>
+              </li>
+              <li>
+                <div>
+                  <label>Year</label>
+                </div>
+                <div>
+                  <input 
+                  name="year"
+                  onChange={updateForm}
+                  type="text" value={state.userInput.year} />
+                </div>
+              </li>
+              <li>
+                <div>
+                  <label>Price</label>
+                </div>
+                <div>
+                  <input name="price"
+                    onChange={updateForm}
+                    type="text" value={state.userInput.price} />
+                </div>
+              </li>
+              <li>
+                <div>
+                  <label>Type</label>
+                </div>
+                <div>
+                  <input 
+                  name="type"
+                  onChange={updateForm}
+                  type="text" value={state.userInput.type} />
+                </div>
+              </li>
+              <li>
+                <div>&nbsp;</div>
+                <div>
+                  <button onClick={submit}>Submit</button>
+                </div>
+              </li>
+            </ul>
+          </>
+        )}
+      </div>
       {state?.autoList?.map(({ _id, make, model, year, price, type }) => {
         return (
           <div className={card} key={_id}>
@@ -81,6 +225,7 @@ function Home() {
   );
 }
 
-const { card, title, content, modelTitle, priceTitle, startTitle } = styles;
+const { card, title, content, modelTitle, priceTitle, startTitle, form } =
+  styles;
 
 export default Home;

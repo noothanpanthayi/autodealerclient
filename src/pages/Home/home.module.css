@@ -39,5 +39,21 @@ ul {
 
 .startTitle {
     font-weight: normal;
-    color:#000
+    color:#000;
+
+}
+.form {
+    font-family:arial
+}
+
+.form li{
+    line-height: 36px;
+    color:blue;
+    font-weight: bold;
+  display:grid;
+  grid-template-columns: 50px 200px;
+}
+
+input {
+    font-size:20px
 }
