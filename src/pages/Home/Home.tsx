@@ -38,7 +38,7 @@ function Home() {
 
   useEffect(() => {
     fetchAuto();
-  });
+  },[]);
 
   return <div>
     <h1>Auto List</h1>
