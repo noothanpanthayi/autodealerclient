@@ -8,8 +8,36 @@
 }
 
 .title {
+    color:#666;
     font-size:26px;
     font-weight: bold;
-    color:darkblue;
     margin:5px 0;
+}
+
+.content {
+    display:flex;
+}
+
+ul {
+ list-style: none;
+}
+
+.content li {
+  line-height: 30px;
+}
+
+.modelTitle {
+    color:darkred;
+    font-size:18px;
+    font-weight:bold
+}
+
+.priceTitle {
+    color:blue;
+    font-weight:bold;
+}
+
+.startTitle {
+    font-weight: normal;
+    color:#000
 }
