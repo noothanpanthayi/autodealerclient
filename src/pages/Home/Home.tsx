@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from "./home.module.css";
 
@@ -30,6 +30,7 @@ function Home() {
       process.env.NODE_ENV === "production"
         ? process.env.REACT_APP_API_URL
         : "/api/";
+        console.log("apiUrl:", apiUrl);
     const header = await fetch(apiUrl);
     const autoList = await header.json();
 
