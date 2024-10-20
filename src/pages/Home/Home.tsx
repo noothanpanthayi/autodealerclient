@@ -28,7 +28,7 @@ function Home() {
     console.log("process.env.NODE_ENV:", process.env.NODE_ENV);
     const apiUrl: any =
       process.env.NODE_ENV === "production"
-        ? process.env.REACT_APP_API_URL
+        ? `${process.env.REACT_APP_API_URL}/api/`
         : "/api/";
         console.log("apiUrl:", apiUrl);
     const header = await fetch(apiUrl);
