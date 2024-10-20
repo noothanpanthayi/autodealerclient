@@ -48,7 +48,6 @@ function Home() {
         : "/api/";
     const header = await fetch(apiUrl);
     const autoList = await header.json();
-
     setState((prevState: any) => {
       return {
         ...prevState,
@@ -63,7 +62,7 @@ function Home() {
 
   useEffect(() => {
     fetchAuto();
-  }, []);
+  }, [state.addAutoForm]);
 
   const updateAddAuto = () => {
     setState((prevState) => {
@@ -101,13 +100,20 @@ function Home() {
       ? `${process.env.REACT_APP_API_URL}/api/`
       : "/api/";
     const response=await fetch(apiUrl, fetchOptions);
-     
     if (!response.ok){
       const errorMessage=await response.text();
       throw new Error(errorMessage)
     }
+    
 
-    return response.json();
+     setState((prevState:any)=>{
+      console.log("posted..")
+      return {
+        ...prevState,
+        addAutoForm:!prevState.addAutoForm
+      }
+     })
+
 
   }
 
