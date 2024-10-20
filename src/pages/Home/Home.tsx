@@ -25,7 +25,7 @@ function Home() {
   });
 
   const fetchAuto = async () => {
-    const header = await fetch("/api/");
+    const header = await fetch("/api");
     const autoList = await header.json();
 
     setState((prevState:any) => {
