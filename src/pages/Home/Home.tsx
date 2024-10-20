@@ -54,7 +54,6 @@ function Home() {
             <div className={content}>
               <div>
                 <img
-                  crossOrigin="anonymous"
                   width="200"
                   alt="picture of car"
                   src="/camry.png"
