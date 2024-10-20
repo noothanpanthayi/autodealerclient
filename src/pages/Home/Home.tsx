@@ -41,6 +41,7 @@ function Home() {
   });
 
   return <div>
+    <h1>Auto List</h1>
     {
         state?.autoList?.map(({_id, make, model, year, price, type})=>{
             return <div className={card} key={_id}>
