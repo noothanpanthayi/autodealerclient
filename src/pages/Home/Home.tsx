@@ -57,7 +57,7 @@ function Home() {
                   crossOrigin="anonymous"
                   width="200"
                   alt="picture of car"
-                  src="https://media.rti.toyota.com/config/pub/3d/vcr/live/vehicle/TOY/2025/camry/2557/455/2ce0ab6f2abf2392135868d33ac516c6bf5199e10cec9bd1183f914e7dbfb58b.png?fit=crop&wid=1200&hei=663&efcview=Exterior&bfc=off&fmt=png-alpha"
+                  src="/camry.png"
                 />
               </div>
               <div>
