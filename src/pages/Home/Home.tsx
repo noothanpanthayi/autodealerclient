@@ -25,7 +25,8 @@ function Home() {
   });
 
   const fetchAuto = async () => {
-    const header = await fetch("/api/");
+    const apiUrl=process.env.REACT_APP_API_URL;
+    const header = await fetch(`${apiUrl}/api/`);
     const autoList = await header.json();
 
     setState((prevState:any) => {
