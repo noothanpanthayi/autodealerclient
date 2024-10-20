@@ -53,11 +53,11 @@ function Home() {
           <div className={card} key={_id}>
             <div className={content}>
               <div>
-                <img
+                {/* <img
                   width="200"
                   alt="picture of car"
                   src="/camry.png"
-                />
+                /> */}
               </div>
               <div>
                 <ul>
