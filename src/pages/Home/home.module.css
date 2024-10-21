@@ -12,6 +12,7 @@
     font-size:26px;
     font-weight: bold;
     margin:5px 0;
+    display:flex
 }
 
 .content {
@@ -27,7 +28,7 @@ ul {
 }
 
 .modelTitle {
-    color:darkred;
+    color:green;
     font-size:18px;
     font-weight:bold
 }
@@ -48,12 +49,71 @@ ul {
 
 .form li{
     line-height: 36px;
-    color:blue;
+    color:#666;
     font-weight: bold;
   display:grid;
   grid-template-columns: 50px 200px;
 }
 
 input {
-    font-size:20px
+    font-size: 20px;
+    width: -webkit-fill-available;
+    border-radius: 4px;
+    border: solid 1px silver;
+    padding: 3px 0;
 }
+
+.addButton {
+    display: flex;
+    background-color: #0d6efd;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px 60px;
+    cursor: pointer;
+    margin-right:10px;
+    align-items: center;
+}
+
+.submitBtn{
+    display: flex;
+    flex:1 1 100%;
+    background-color: green;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px 60px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    position: relative;
+    top: 2px;
+    left: 5px;
+}
+
+ .chkBox {
+    font-size: 20px;
+    transform: scale(1.5);
+    width: -webkit-fill-available;
+    border-radius: 4px;
+    border: solid 1px silver;
+    padding: 3px 0;
+    position: relative;
+    top: -2px;
+ }
+
+ .marginLeft{
+    /* margin-left:10px */
+ }
+
+ .mainDesc{
+    font-size:18px;
+    text-align: center;
+    margin-top:10px;
+    border-top:solid 1px silver;
+    padding:10px 0;
+    border-bottom:solid 1px silver
+ }
